@@ -1,31 +1,5 @@
-.border-red {
-  border: 1px solid red;
-}
-.album-frame {
-  width: 100px;
-  height: 100px;
-  border: 1px solid red;
-}
-.photo {
-  width: 50px;
-  height: 50px;
-}
-.product-image {
-  width: auto;
-  height: 150px;
-}
-table {
-  margin: 0 auto;
-  font-family: "Arial";
-  border-collapse: collapse;
-}
-table, th, td {
-  border: 1px solid lightgray;
-}
-
-.input-price {
-  width: 70px;
-}
-.input-title {
-  width: 300px;
+a,
+a:hover,
+a:focus {
+  font-family: "Tahoma", sans-serif;
 }

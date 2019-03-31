@@ -9,22 +9,22 @@ app.listen(3001);
 
 var confessions =  [
   {
-    sender: "Anh Đức",
-    receiver: "My My",
-    message: "Chúc em một khóa mới may mắn nè! Thương.",
-    mp3Code: "IW87ZFCO",
+    sender: "Lan",
+    receiver: "Điệp",
+    message: "From Lan with love.",
+    mp3Code: "ZW6A9I0A",
+  },
+  {
+    sender: "Đức",
+    receiver: "Tập thể lớp 9.1",
+    message: "Nhớ lớp mình quá bây ơi.",
+    mp3Code: "ZW6FEBZA",
   },
   {
     sender: "Donald Trump",
     receiver: "Kim Jong Un",
     message: "Happy new year, man.",
     mp3Code: "ZW6EA88Z",
-  },
-  {
-    sender: "Đức",
-    receiver: "Tập thể lớp 9.1",
-    message: "Nhớ lớp mình quá bây ơi.",
-    mp3Code: "IW6OI0FA",
   },
 ];
 
