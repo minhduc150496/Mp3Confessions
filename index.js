@@ -1,3 +1,5 @@
+const PORT = process.env.PORT || 3000;
+
 var express = require("express");
 var app = new express();
 var bodyParser = require("body-parser");
@@ -5,7 +7,7 @@ var parser = bodyParser.urlencoded({extended: false});
 app.use(express.static("public"));
 app.set("view engine", "ejs");
 app.set("views", "./views");
-app.listen(3001);
+app.listen(PORT);
 
 var confessions =  [
   {
