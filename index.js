@@ -1,4 +1,5 @@
 const PORT = process.env.PORT || 3000;
+const AMOUNT_PER_DAY = 100;
 
 var express = require("express");
 var app = new express();
@@ -38,12 +39,18 @@ app.get("/getConfessions", function(req, res) {
   res.send(confessions);
 })
 
-app.get("/create", function(req, res) {
-  res.render("create");
-})
-
-app.post("/createConfession", parser, function(req, res) {
-  const newConfession = req.body;
-  confessions = [newConfession].concat(confessions);
-  res.send({success: true});
+app.post("/writeConfession", parser, function(req, res) {
+  if (confessions.length >= AMOUNT_PER_DAY) {
+    res.send({
+      success: false,
+      message: "Full"
+    });
+  } else {
+    const newConfession = req.body;
+    confessions = [newConfession].concat(confessions);
+    res.send({
+      success: true,
+      confessions
+    });
+  }
 })

@@ -3,3 +3,48 @@ a:hover,
 a:focus {
   font-family: "Tahoma", sans-serif;
 }
+
+iframe {
+  max-width: 100%;
+}
+
+.write-cfs {
+    position: fixed;
+    z-index: 1000;
+    display: block;
+    background: #cc1573;
+    background: -webkit-linear-gradient(to right, #cc1573, #5722a9);
+    background: linear-gradient(to right, #cc1573, #5722a9);
+    border-radius: 50%;
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.3);
+    color: #ffffff !important;
+    line-height: 40px;
+    text-align: center;
+    right: 50px;
+    bottom: 50px;
+    height: 70px;
+    width: 70px;
+    -webkit-transition-duration: 200ms;
+    transition-duration: 200ms;
+}
+.write-cfs:hover {
+    right: 55px;
+}
+.write-cfs .fa {
+    margin-top: 12px;
+}
+
+#scrollUp {
+    bottom: 135px;
+    right: 55px;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    z-index: 1000 !important;
+}
+#scrollUp:hover {
+  right: 60px;
+}
+#scrollUp .fa {
+  margin-top: 5px;
+}
