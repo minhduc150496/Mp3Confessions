@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Cookie');
+
 a,
 a:hover,
 a:focus {
@@ -8,6 +10,27 @@ iframe {
   max-width: 100%;
 }
 
+::placeholder {
+  color: #cfcfcf !important;
+}
+
+.text-logo {
+    font-family: 'Cookie', cursive !important;
+    font-size: 46px !important;
+}
+header .text-logo {
+    color: white !important;
+    width: 250px !important;
+    max-width: unset !important;
+}
+.breadcumb-area .bradcumbContent {
+  height: 64px;
+}
+.breadcumb-area .bradcumbContent h2 {
+    font-weight: 200;
+    font-size: 28px;
+    line-height: 64px;
+}
 .write-cfs {
     position: fixed;
     z-index: 1000;
@@ -47,4 +70,22 @@ iframe {
 }
 #scrollUp .fa {
   margin-top: 5px;
+}
+
+.input-message {
+  height: 250px;
+}
+
+.breakpoint-off .classynav ul li .dropdown {
+ width: 320px;
+}
+.cta-content .cta-text h2 {
+  font-size: 55px;
+}
+.cta-btn {
+  margin-top: 15px;
+}
+.footer-area {
+    padding-bottom: 30px;
+    padding-top: 30px;
 }

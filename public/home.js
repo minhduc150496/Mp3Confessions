@@ -168,9 +168,9 @@ var WriteConfessionDialog = React.createClass({
             </div>
             <label>Mấy dòng tâm sự:</label>
             <div className="input-group">
-              <textarea className="form-control"
+              <textarea className="form-control input-message"
               ref="txtMessage"
-              placeholder="Ví dụ:  Em à. Anh biết giờ này đây. A có nói gì cũng chẳng thể thay đổi được quyết đinh của em phải không. Nhưng anh vẫn muốn nói ra tất cả. Nói ra suy nghĩ trong anh. Một lần cuối cùng và mãi mãi. Trong giây phút này, tâm trí anh rối bời.. Thời gian bên em. Anh đã vô tâm, lạnh nhạt với em. Anh thờ ơ, anh bỏ ngoài tai, anh không quan tâm những lời em nói. Anh đã không quan tâm đến cảm giác của em. Để rồi, những ngày qua. Anh đã sống như 1 kẻ vô hồn khi em yêu người khác. Sự ân hận, nuối tiếc muộn màng. Con tim đau như ai bóp ngẹt. Anh không thể làm chủ bản thân mình. Anh điên dại níu kéo em về bên anh. Hành động theo bản năng của một thằng đàn ông đang dần để tuột mất người con gái mà mình đã yêu hơn tất cả. Nhưng dường như, a càng níu thỳ lại càng đẩy em ra xa anh nhiều hơn." aria-label="With textarea"/>
+              placeholder="Ví dụ: Em à. Anh biết giờ này đây. A có nói gì cũng chẳng thể thay đổi được quyết đinh của em phải không. Nhưng anh vẫn muốn nói ra tất cả. Nói ra suy nghĩ trong anh. Một lần cuối cùng và mãi mãi. Trong giây phút này, tâm trí anh rối bời.. Thời gian bên em. Anh đã vô tâm, lạnh nhạt với em. Anh thờ ơ, anh bỏ ngoài tai, anh không quan tâm những lời em nói. Anh đã không quan tâm đến cảm giác của em. Để rồi, những ngày qua. Anh đã sống như 1 kẻ vô hồn khi em yêu người khác. Sự ân hận, nuối tiếc muộn màng. Con tim đau như ai bóp ngẹt. Anh không thể làm chủ bản thân mình. Anh điên dại níu kéo em về bên anh. Hành động theo bản năng của một thằng đàn ông đang dần để tuột mất người con gái mà mình đã yêu hơn tất cả. Nhưng dường như, a càng níu thỳ lại càng đẩy em ra xa anh nhiều hơn." aria-label="With textarea"/>
             </div>
           </div>
           <div className="modal-footer">

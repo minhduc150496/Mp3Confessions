@@ -11,18 +11,18 @@ app.set("views", "./views");
 app.listen(PORT);
 
 var confessions =  [
-  {
-    sender: "Lan",
-    receiver: "Điệp",
-    message: "From Lan with love.",
-    mp3Code: "ZW6A9I0A",
-  },
-  {
-    sender: "Đức",
-    receiver: "Tập thể lớp 9.1",
-    message: "Nhớ lớp mình quá bây ơi.",
-    mp3Code: "ZW6FEBZA",
-  },
+  // {
+  //   sender: "Lan",
+  //   receiver: "Điệp",
+  //   message: "From Lan with love.",
+  //   mp3Code: "ZW6A9I0A",
+  // },
+  // {
+  //   sender: "Đức",
+  //   receiver: "Tập thể lớp 9.1",
+  //   message: "Nhớ lớp mình quá bây ơi.",
+  //   mp3Code: "ZW6FEBZA",
+  // },
   {
     sender: "Donald Trump",
     receiver: "Kim Jong Un",
