@@ -4,7 +4,7 @@ class Confession extends React.Component {
   render() {
     return(
       <div className="single-blog-post mb-100 wow fadeInUp" data-wow-delay="300ms">
-        <div className="blog-post-thumb mb-30">
+        <div className="blog-post-thumb mb-15">
           <iframe
             scrolling="no"
             width="100%"
@@ -16,13 +16,8 @@ class Confession extends React.Component {
           From: {this.props.sender}<br/>
           To: {this.props.receiver}
         </a>
-        <div className="post-meta d-flex justify-content-between">
-          <div className="post-date">
-            <p>May 22, 2018</p>
-          </div>
-        </div>
-        <div className="bg-gradients mb-30 w-25"></div>
-        <p>{this.props.message}</p>
+        <div className="post-separator bg-gradients mt-15 mb-15"></div>
+        <p className="mt-15">{this.props.message}</p>
       </div>
     );
   }

@@ -7,6 +7,9 @@
 i.fa {
   font-family: "FontAwesome" !important;
 }
+p {
+  font-weight: 600;
+}
 
 iframe {
   max-width: 100%;
@@ -40,6 +43,11 @@ header .text-logo {
     font-weight: 300;
     font-size: 28px;
     line-height: 64px;
+}
+.post-separator {
+    margin-right: auto;
+    height: 1px;
+    width: 50% !important;
 }
 .write-cfs {
     position: fixed;
@@ -89,6 +97,11 @@ header .text-logo {
 .breakpoint-off .classynav ul li .dropdown {
  width: 320px;
 }
+
+.musica-pagination-area .pagination .page-item.active .page-link {
+  text-decoration: underline;
+}
+
 .cta-content .cta-text h2 {
   font-size: 55px;
 }
