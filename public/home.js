@@ -1,6 +1,6 @@
 var confessions =  [];
 
-var Confession = React.createClass({
+class Confession extends React.Component {
   render() {
     return(
       <div className="single-blog-post mb-100 wow fadeInUp" data-wow-delay="300ms">
@@ -10,7 +10,7 @@ var Confession = React.createClass({
             width="100%"
             height="180"
             src={"https://mp3.zing.vn/embed/song/"+this.props.mp3Code+"?start=false"}
-            frameBorder="0" allowFullScreen="true"></iframe>
+            frameBorder="0" allowFullScreen={true}></iframe>
         </div>
         <a href="#" className="post-title">
           From: {this.props.sender}<br/>
@@ -26,47 +26,92 @@ var Confession = React.createClass({
       </div>
     );
   }
-});
+}
 
 var confessionList = null;
-var ConfessionList = React.createClass({
-  getInitialState() {
-    return {confessions: []};
-  },
+class ConfessionList extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state={
+      confessions: [],
+      activePage: 1,
+      totalPage: 0,
+      pages: [1]
+    };
+    this.changePage = this.changePage.bind(this);
+  }
   componentWillMount(){
     confessionList = this;
+    this.getConfessions();
+  }
+  getConfessions() {
     $.ajax({
       type: "GET",
       url: "/getConfessions",
+      data: {
+        pageNumber: this.state.activePage
+      },
       success: function(data) {
-        confessionList.setState({confessions: data});
+        var pages = [];
+        for (var i = 1; i <= data.totalPage; i++) {
+          pages.push(i);
+        }
+        confessionList.setState({
+          confessions: data.confessions,
+          totalPage: data.totalPage,
+          pages: pages
+        });
       }
     });
-  },
+  }
+  changePage(pageNumber) {
+    this.state.activePage = pageNumber;
+    this.getConfessions();
+  }
   render() {
     return (
       <div>
-      {
-        this.state.confessions.map((confession, index) => {
-          return(
-          <Confession
-            key={index}
-            sender={confession.sender}
-            receiver={confession.receiver}
-            message={confession.message}
-            mp3Code={confession.mp3Code} />
-          );
-        })
-      }
+        {
+          this.state.confessions.map((confession, index) => {
+            return(
+            <Confession
+              key={index}
+              sender={confession.sender}
+              receiver={confession.receiver}
+              message={confession.message}
+              mp3Code={confession.mp3Code} />
+            );
+          })
+        }
+        <div className="musica-pagination-area wow fadeInUp" data-wow-delay="700ms">
+          <nav>
+            <ul className="pagination">
+              {
+                this.state.pages.map((item, index) => {
+                  var active = "";
+                  if (item == confessionList.state.activePage) {
+                    active = " active";
+                  }
+                  return (
+                    <li key={index} className={"page-item" + active}>
+                      <a className="page-link" href="#" onClick={() => this.changePage(item)}>{item}</a>
+                    </li>
+                  );
+                })
+              }
+            </ul>
+          </nav>
+        </div>
       </div>
     );
   }
-});
+}
 
 var writeConfessionDialog = null;
-var WriteConfessionDialog = React.createClass({
-  getInitialState() {
-    return {
+class WriteConfessionDialog extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state={
       mp3Code: "",
       demoMp3Link: "",
       btnSubmitLabel: "Gửi",
@@ -74,7 +119,19 @@ var WriteConfessionDialog = React.createClass({
       btnCloseDisabled: false,
       btnCancelDisabled: false
     };
-  },
+    this.handleMp3LinkChange = this.handleMp3LinkChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.clearAllFields = this.clearAllFields.bind(this);
+  }
+  clearAllFields() {
+    this.refs.txtMp3Link.value = "";
+    this.refs.txtFrom.value = "";
+    this.refs.txtTo.value = "";
+    this.refs.txtMessage.value = "";
+    this.setState({
+      demoMp3Link: ""
+    });
+  }
   handleMp3LinkChange() {
     var mp3Code = this.refs.txtMp3Link.value;
     var arr = mp3Code.split("/");
@@ -93,7 +150,7 @@ var WriteConfessionDialog = React.createClass({
       demoMp3Link: demoMp3Link,
       mp3Code: mp3Code
     })
-  },
+  }
   handleSubmit() {
     this.setState({
       btnSubmitLabel: "Đang gửi...",
@@ -113,21 +170,25 @@ var WriteConfessionDialog = React.createClass({
       data: newConfession,
       success: function(response) {
         // update CFS list
-        confessionList.setState({
-          confessions: response.confessions
-        });
+        confessionList.state = {
+          activePage: 1
+        }
+        confessionList.getConfessions();
         writeConfessionDialog.setState({
           btnSubmitLabel: "Gửi",
           btnSubmitDisabled: false,
           btnCloseDisabled: false,
           btnCancelDisabled: false
         });
+        writeConfessionDialog.clearAllFields();
+        $("#write-confession-dialog").modal("hide");
+        alertify.notify('Confession của bạn đã được gửi thành công!','custom');
       }
     })
-  },
+  }
   componentWillMount(){
     writeConfessionDialog = this;
-  },
+  }
   render() {
     return(
       <div className="modal-dialog modal-lg" role="document">
@@ -142,7 +203,7 @@ var WriteConfessionDialog = React.createClass({
           </div>
           <div className="modal-body">
             <h2 className="mt-30">Bước 1: Gói ghém giai điệu</h2>
-            <p>Vui lòng dán đường dẫn Zing MP3 vào đây:</p>
+            <p>Vui lòng dán đường dẫn <a target="_blank" href="http://zingmp3.vn">Zing MP3</a> vào đây:</p>
             <div className="input-group mb-3">
               <input type="text" className="form-control" ref="txtMp3Link"
               placeholder="Ví dụ: https://zingmp3.vn/bai-hat/Nay-Em-Le-Thien-Hieu/ZW7B76AF.html"
@@ -152,7 +213,7 @@ var WriteConfessionDialog = React.createClass({
             <iframe
               scrolling="no" width="100%" height="180"
               src={this.state.demoMp3Link}
-              frameBorder="0" allowFullScreen="true"/>
+              frameBorder="0" allowFullScreen={true}/>
             <h2 className="mt-50">Bước 2: Nhắn gửi yêu thương</h2>
             <label>From:</label>
             <div className="input-group mb-3">
@@ -175,7 +236,7 @@ var WriteConfessionDialog = React.createClass({
           </div>
           <div className="modal-footer">
             <button type="button" className="btn btn-secondary"
-              disabled={this.state.btnCancelDisabled}
+              disabled={this.state.btnCancelDisabled} onClick={this.clearAllFields}
               data-dismiss="modal">Hủy</button>
             <button type="button" className="btn btn-primary"
               disabled={this.state.btnSubmitDisabled} onClick={this.handleSubmit}>
@@ -186,14 +247,15 @@ var WriteConfessionDialog = React.createClass({
       </div>
     );
   }
-});
+}
 
 ReactDOM.render(
   <ConfessionList />,
   document.getElementById('confessions-list')
 );
-
 ReactDOM.render(
   <WriteConfessionDialog />,
   document.getElementById('write-confession-dialog')
 );
+
+alertify.set('notifier','position', 'bottom-left');

@@ -1,9 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Cookie');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400&subset=vietnamese');
 
-a,
-a:hover,
-a:focus {
-  font-family: "Tahoma", sans-serif;
+*{
+  font-family: "Montserrat", sans-serif !important;
+}
+i.fa {
+  font-family: "FontAwesome" !important;
 }
 
 iframe {
@@ -23,11 +25,19 @@ header .text-logo {
     width: 250px !important;
     max-width: unset !important;
 }
+.header-area .musica-main-menu .classy-navbar .classynav ul li a {
+  font-weight: 400;
+}
+.header-area .musica-main-menu .classy-navbar .classynav ul li ul li a {
+  color: black;
+  font-weight: 600;
+}
+
 .breadcumb-area .bradcumbContent {
   height: 64px;
 }
 .breadcumb-area .bradcumbContent h2 {
-    font-weight: 200;
+    font-weight: 300;
     font-size: 28px;
     line-height: 64px;
 }
@@ -88,4 +98,19 @@ header .text-logo {
 .footer-area {
     padding-bottom: 30px;
     padding-top: 30px;
+}
+
+#write-confession-dialog a:hover {
+  text-decoration: underline;
+}
+#write-confession-dialog  h2 {
+  font-size: 28px;
+}
+
+.ajs-message.ajs-custom {
+  background: linear-gradient(to right, #cc1573, #5722a9);
+  border: 3px solid black;
+  color: black;
+  shadow: black 0 0 15px;
+  font-size: 20px;
 }

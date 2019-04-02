@@ -1,5 +1,6 @@
 const PORT = process.env.PORT || 3000;
-const AMOUNT_PER_DAY = 100;
+const MAX_TOTAL = 5;
+const PAGE_SIZE = 3;
 
 var express = require("express");
 var app = new express();
@@ -11,18 +12,42 @@ app.set("views", "./views");
 app.listen(PORT);
 
 var confessions =  [
-  // {
-  //   sender: "Lan",
-  //   receiver: "Điệp",
-  //   message: "From Lan with love.",
-  //   mp3Code: "ZW6A9I0A",
-  // },
-  // {
-  //   sender: "Đức",
-  //   receiver: "Tập thể lớp 9.1",
-  //   message: "Nhớ lớp mình quá bây ơi.",
-  //   mp3Code: "ZW6FEBZA",
-  // },
+  {
+    sender: "Lan",
+    receiver: "Điệp",
+    message: "From Lan with love.",
+    mp3Code: "ZW6A9I0A",
+  },
+  {
+    sender: "Đức",
+    receiver: "Tập thể lớp 9.1",
+    message: "Nhớ lớp mình quá bây ơi.",
+    mp3Code: "ZW6FEBZA",
+  },
+  {
+    sender: "Donald Trump",
+    receiver: "Kim Jong Un",
+    message: "Happy new year, man.",
+    mp3Code: "ZW6EA88Z",
+  },
+  {
+    sender: "Donald Trump",
+    receiver: "Kim Jong Un",
+    message: "Happy new year, man.",
+    mp3Code: "ZW6EA88Z",
+  },
+  {
+    sender: "Donald Trump",
+    receiver: "Kim Jong Un",
+    message: "Happy new year, man.",
+    mp3Code: "ZW6EA88Z",
+  },
+  {
+    sender: "Donald Trump",
+    receiver: "Kim Jong Un",
+    message: "Happy new year, man.",
+    mp3Code: "ZW6EA88Z",
+  },
   {
     sender: "Donald Trump",
     receiver: "Kim Jong Un",
@@ -30,27 +55,31 @@ var confessions =  [
     mp3Code: "ZW6EA88Z",
   },
 ];
+confessions = confessions.concat(confessions);
+confessions = confessions.concat(confessions);
 
 app.get("/", function(req, res) {
   res.render("home");
 })
 
 app.get("/getConfessions", function(req, res) {
-  res.send(confessions);
+  const pageNumber = req.query.pageNumber;
+  const totalItems = confessions.length;
+  var result = confessions.slice((pageNumber-1) * PAGE_SIZE, pageNumber * PAGE_SIZE);
+  res.send({
+    confessions: result,
+    totalPage: Math.ceil(confessions.length/PAGE_SIZE)
+  });
 })
 
 app.post("/writeConfession", parser, function(req, res) {
-  if (confessions.length >= AMOUNT_PER_DAY) {
-    res.send({
-      success: false,
-      message: "Full"
-    });
-  } else {
-    const newConfession = req.body;
-    confessions = [newConfession].concat(confessions);
-    res.send({
-      success: true,
-      confessions
-    });
-  }
+  const newConfession = req.body;
+  confessions = [newConfession].concat(confessions);
+  if (confessions.length > MAX_TOTAL) {
+    confessions = confessions.slice(0, MAX_TOTAL);
+  } // keep only MAX_TOTAL items
+  res.send({
+    success: true,
+    confessions
+  });
 })

@@ -16,6 +16,7 @@
 
   <!-- Core Stylesheet -->
   <link rel="stylesheet" href="assets/musica/style.css">
+  <link rel="stylesheet" href="libs/alertifyjs/css/alertify.min.css">
   <link rel="stylesheet" href="styles.css">
 
 </head>
@@ -138,16 +139,6 @@
 
             <div id="confessions-list"></div>
 
-            <!-- Pagination -->
-            <div class="musica-pagination-area wow fadeInUp" data-wow-delay="700ms">
-              <nav>
-                <ul class="pagination">
-                  <li class="page-item active"><a class="page-link" href="#">01.</a></li>
-                  <li class="page-item"><a class="page-link" href="#">02.</a></li>
-                  <li class="page-item"><a class="page-link" href="#">03.</a></li>
-                </ul>
-              </nav>
-            </div>
           </div>
         </div>
       </div>
@@ -200,8 +191,7 @@
   <!-- ##### Footer Area Start ##### -->
 
   <a id="writeCFS" class="write-cfs" href="#"
-    data-toggle="modal" data-target="#write-confession-dialog"
-    style="">
+    data-toggle="modal" data-target="#write-confession-dialog">
     <i class="fa fa-pencil fa-3x"></i>
   </a>
 
@@ -221,10 +211,11 @@
   <!-- Active js -->
   <script src="assets/musica/js/active.js"></script>
 
-  <script src="https://unpkg.com/react@15/dist/react.js"></script>
-  <script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>
-  <script src="https://unpkg.com/babel-core@5.8.38/browser.min.js"></script>
-  <!-- <script src="libs/jquery-3.1.1.min.js"></script> -->
+  <script src="libs/alertifyjs/alertify.min.js"></script>
+
+  <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
   <script src="home.js" type="text/babel"></script>
 </body>
