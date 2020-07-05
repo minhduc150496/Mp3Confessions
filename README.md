@@ -7,3 +7,5 @@ Technologies:
 + jQuery
 + React JS
 + Node JS + Express JS
+
+// This is added on Jul 5, 2020
